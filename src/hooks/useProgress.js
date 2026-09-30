@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-const STORAGE_KEY = "notecraft-progress-v1";
+const STORAGE_KEY = "tonus-progress-v1";
 
 function defaultProgress() {
   return { xp: 0, streak: 0, lastPracticeDate: null, completedLessons: {} };

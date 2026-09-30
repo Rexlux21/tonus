@@ -155,7 +155,7 @@ export default function Practice({ lesson, onExit, onComplete }) {
       {micState === "idle" && (
         <div className="mic-gate">
           <h2>Ready to practice {lesson.title.toLowerCase()}?</h2>
-          <p>Notecraft needs microphone access to listen to your pitch. Nothing is recorded or sent anywhere — it's analyzed live in your browser.</p>
+          <p>Tonus needs microphone access to listen to your pitch. Nothing is recorded or sent anywhere — it's analyzed live in your browser.</p>
           <button className="btn btn-primary" onClick={startListening}>
             Enable microphone &amp; start
           </button>
@@ -165,7 +165,7 @@ export default function Practice({ lesson, onExit, onComplete }) {
       {micState === "denied" && (
         <div className="mic-gate mic-error">
           <h2>Microphone access denied</h2>
-          <p>Notecraft can't listen without it. Allow microphone access in your browser's site settings, then try again.</p>
+          <p>Tonus can't listen without it. Allow microphone access in your browser's site settings, then try again.</p>
           <button className="btn btn-secondary" onClick={startListening}>
             Try again
           </button>

@@ -1,11 +1,11 @@
-# Notecraft
+# Tonus
 
 A practice tool for guitar, piano, and voice that listens through your microphone and gives real-time pitch feedback — the same core loop as apps like Yousician, built from scratch with the Web Audio API.
 
 ## How it works
 
 - Pick a lesson: a short, ordered sequence of target notes for guitar, piano, or voice.
-- Notecraft asks for microphone access, then runs a live pitch-detection loop (autocorrelation with parabolic interpolation, a well-established technique for real-time monophonic pitch tracking) on every animation frame.
+- Tonus asks for microphone access, then runs a live pitch-detection loop (autocorrelation with parabolic interpolation, a well-established technique for real-time monophonic pitch tracking) on every animation frame.
 - Detected pitch is compared to the target note in cents (hundredths of a semitone). Hold it steady and in tune for about three-quarters of a second to confirm it and move to the next note.
 - Finishing a lesson scores your accuracy and saves XP, a daily streak, and your best score per lesson to `localStorage` — nothing leaves your browser.
 

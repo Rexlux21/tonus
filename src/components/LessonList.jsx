@@ -10,7 +10,7 @@ export default function LessonList({ progress, onSelectLesson }) {
     <div className="lesson-list-page">
       <div className="page-heading">
         <h1>Lessons</h1>
-        <p>Pick a note sequence and Notecraft will listen while you work through it.</p>
+        <p>Pick a note sequence and Tonus will listen while you work through it.</p>
       </div>
 
       <div className="filter-row">

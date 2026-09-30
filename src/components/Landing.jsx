@@ -3,7 +3,7 @@ import { INSTRUMENTS, LESSONS } from "../data/lessons";
 const FEATURES = [
   {
     title: "Real-time pitch listening",
-    body: "Your microphone feeds a live pitch detector, so Notecraft hears exactly what you play or sing — not a guess after the fact.",
+    body: "Your microphone feeds a live pitch detector, so Tonus hears exactly what you play or sing — not a guess after the fact.",
   },
   {
     title: "Any instrument, one method",
@@ -25,7 +25,7 @@ export default function Landing({ onNavigate }) {
         <h1>
           Play the note.
           <br />
-          Notecraft tells you if it's right.
+          Tonus tells you if it's right.
         </h1>
         <p className="hero-sub">
           A practice tool for guitar, piano, and voice that uses your microphone to give
@@ -70,7 +70,7 @@ export default function Landing({ onNavigate }) {
             <span className="step-n">2</span>
             <div>
               <h4>Play or sing the target note</h4>
-              <p>Notecraft listens through your microphone and shows your pitch in real time.</p>
+              <p>Tonus listens through your microphone and shows your pitch in real time.</p>
             </div>
           </li>
           <li>

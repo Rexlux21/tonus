@@ -8,8 +8,8 @@ export default function Header({ view, onNavigate, xp, streak }) {
   return (
     <header className="app-header">
       <button className="logo" onClick={() => onNavigate("landing")}>
-        <span className="logo-mark">N</span>
-        Notecraft
+        <span className="logo-mark">T</span>
+        Tonus
       </button>
 
       <nav className="main-nav">

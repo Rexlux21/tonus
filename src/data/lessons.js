@@ -15,7 +15,7 @@ export const LESSONS = [
     title: "Open Strings",
     level: "Beginner",
     description:
-      "Play each open string on its own and hold it until Notecraft confirms you're in tune.",
+      "Play each open string on its own and hold it until Tonus confirms you're in tune.",
     notes: [
       { name: "E", octave: 2, label: "Low E — 6th string" },
       { name: "A", octave: 2, label: "A — 5th string" },

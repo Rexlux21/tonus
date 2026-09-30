@@ -53,7 +53,7 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
-        Notecraft — practice with real-time pitch feedback, right in your browser.
+        Tonus — practice with real-time pitch feedback, right in your browser.
       </footer>
     </div>
   );
