@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { autoCorrelate, frequencyToNote } from "../lib/pitchDetect";
+import GuitarFretboard from "./GuitarFretboard";
+import PianoKeyboard from "./PianoKeyboard";
 
 // How many consecutive in-tune animation frames count as "held" before we
 // advance to the next note. At ~60fps this is roughly three-quarters of a
@@ -192,6 +194,13 @@ export default function Practice({ lesson, onExit, onComplete }) {
             </h1>
             <p>{target.label}</p>
           </div>
+
+          {lesson.instrument === "guitar" && (
+            <GuitarFretboard name={target.name} octave={target.octave} />
+          )}
+          {lesson.instrument === "piano" && (
+            <PianoKeyboard name={target.name} octave={target.octave} />
+          )}
 
           <div className={`meter ${needleClass}`}>
             <div className="meter-track">

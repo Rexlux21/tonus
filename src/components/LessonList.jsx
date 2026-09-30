@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { INSTRUMENTS, LESSONS } from "../data/lessons";
+import GuitarFretboard from "./GuitarFretboard";
+import PianoKeyboard from "./PianoKeyboard";
+import TriviaWidget from "./TriviaWidget";
 
-export default function LessonList({ progress, onSelectLesson }) {
+const PREVIEW_NOTE = { name: "G", octave: 3 };
+
+export default function LessonList({ progress, onSelectLesson, onBonusXp }) {
   const [filter, setFilter] = useState("all");
 
   const visible = filter === "all" ? LESSONS : LESSONS.filter((l) => l.instrument === filter);
+  const activeInstrument = INSTRUMENTS.find((inst) => inst.id === filter);
 
   return (
     <div className="lesson-list-page">
@@ -30,6 +36,27 @@ export default function LessonList({ progress, onSelectLesson }) {
           </button>
         ))}
       </div>
+
+      {activeInstrument && (
+        <div className="instrument-panel">
+          <div className="instrument-preview">
+            <span className="eyebrow">{activeInstrument.label} at a glance</span>
+            {activeInstrument.id === "guitar" && (
+              <GuitarFretboard name={PREVIEW_NOTE.name} octave={PREVIEW_NOTE.octave} />
+            )}
+            {activeInstrument.id === "piano" && (
+              <PianoKeyboard name={PREVIEW_NOTE.name} octave={PREVIEW_NOTE.octave} />
+            )}
+            {activeInstrument.id === "voice" && (
+              <p className="voice-tip">
+                No instrument needed — just your voice and a quiet room. Pick a lesson below to
+                start matching pitch.
+              </p>
+            )}
+          </div>
+          <TriviaWidget onCorrect={() => onBonusXp?.(10)} />
+        </div>
+      )}
 
       <div className="lesson-grid">
         {visible.map((lesson) => {

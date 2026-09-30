@@ -62,7 +62,11 @@ export function useProgress() {
     });
   }, []);
 
+  const addBonusXp = useCallback((amount) => {
+    setProgress((prev) => ({ ...prev, xp: prev.xp + amount }));
+  }, []);
+
   const resetProgress = useCallback(() => setProgress(defaultProgress()), []);
 
-  return { progress, completeLesson, resetProgress };
+  return { progress, completeLesson, addBonusXp, resetProgress };
 }

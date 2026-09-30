@@ -11,7 +11,7 @@ import "./App.css";
 export default function App() {
   const [view, setView] = useState("landing");
   const [activeLessonId, setActiveLessonId] = useState(null);
-  const { progress, completeLesson, resetProgress } = useProgress();
+  const { progress, completeLesson, addBonusXp, resetProgress } = useProgress();
 
   const navigate = (nextView) => {
     setView(nextView);
@@ -32,7 +32,9 @@ export default function App() {
       <main>
         {view === "landing" && <Landing onNavigate={navigate} />}
 
-        {view === "lessons" && <LessonList progress={progress} onSelectLesson={selectLesson} />}
+        {view === "lessons" && (
+          <LessonList progress={progress} onSelectLesson={selectLesson} onBonusXp={addBonusXp} />
+        )}
 
         {view === "practice" && activeLesson && (
           <Practice
