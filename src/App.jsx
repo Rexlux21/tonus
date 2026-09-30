@@ -4,6 +4,7 @@ import Landing from "./components/Landing";
 import LessonList from "./components/LessonList";
 import Practice from "./components/Practice";
 import ProgressDashboard from "./components/ProgressDashboard";
+import SongTools from "./components/SongTools";
 import { getLessonById } from "./data/lessons";
 import { useProgress } from "./hooks/useProgress";
 import "./App.css";
@@ -11,6 +12,7 @@ import "./App.css";
 export default function App() {
   const [view, setView] = useState("landing");
   const [activeLessonId, setActiveLessonId] = useState(null);
+  const [lessonFilter, setLessonFilter] = useState("all");
   const { progress, completeLesson, addBonusXp, resetProgress } = useProgress();
 
   const navigate = (nextView) => {
@@ -23,17 +25,35 @@ export default function App() {
     setView("practice");
   };
 
+  const selectInstrument = (instrumentId) => {
+    setLessonFilter(instrumentId);
+    navigate("lessons");
+  };
+
   const activeLesson = activeLessonId ? getLessonById(activeLessonId) : null;
 
   return (
     <div className="app-shell">
-      <Header view={view} onNavigate={navigate} xp={progress.xp} streak={progress.streak} />
+      <Header
+        view={view}
+        activeInstrument={lessonFilter}
+        onNavigate={navigate}
+        onSelectInstrument={selectInstrument}
+        xp={progress.xp}
+        streak={progress.streak}
+      />
 
       <main>
         {view === "landing" && <Landing onNavigate={navigate} />}
 
         {view === "lessons" && (
-          <LessonList progress={progress} onSelectLesson={selectLesson} onBonusXp={addBonusXp} />
+          <LessonList
+            progress={progress}
+            onSelectLesson={selectLesson}
+            onBonusXp={addBonusXp}
+            filter={lessonFilter}
+            onFilterChange={setLessonFilter}
+          />
         )}
 
         {view === "practice" && activeLesson && (
@@ -44,6 +64,8 @@ export default function App() {
             onComplete={(accuracy) => completeLesson(activeLesson.id, accuracy)}
           />
         )}
+
+        {view === "songtools" && <SongTools />}
 
         {view === "progress" && (
           <ProgressDashboard

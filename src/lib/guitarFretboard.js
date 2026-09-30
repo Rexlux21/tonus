@@ -36,3 +36,16 @@ export function findFretPosition(name, octave, maxFret = 15) {
   });
   return best;
 }
+
+/**
+ * Like findFretPosition, but for callers that only have a note name (e.g. a
+ * chord root with no specific octave) — tries the octaves a chord root
+ * typically falls in on guitar and returns the first playable position.
+ */
+export function findAnyFretPosition(name) {
+  for (const octave of [3, 2, 4]) {
+    const position = findFretPosition(name, octave);
+    if (position) return { ...position, octave };
+  }
+  return null;
+}

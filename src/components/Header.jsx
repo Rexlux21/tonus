@@ -1,7 +1,10 @@
-export default function Header({ view, onNavigate, xp, streak }) {
+import { INSTRUMENTS } from "../data/lessons";
+
+export default function Header({ view, activeInstrument, onNavigate, onSelectInstrument, xp, streak }) {
   const navItems = [
     { id: "landing", label: "Home" },
     { id: "lessons", label: "Lessons" },
+    { id: "songtools", label: "Song Tools" },
     { id: "progress", label: "Progress" },
   ];
 
@@ -20,6 +23,20 @@ export default function Header({ view, onNavigate, xp, streak }) {
             onClick={() => onNavigate(item.id)}
           >
             {item.label}
+          </button>
+        ))}
+
+        <span className="nav-divider" aria-hidden="true" />
+
+        {INSTRUMENTS.map((inst) => (
+          <button
+            key={inst.id}
+            className={`nav-link nav-instrument${
+              view === "lessons" && activeInstrument === inst.id ? " active" : ""
+            }`}
+            onClick={() => onSelectInstrument(inst.id)}
+          >
+            {inst.label}
           </button>
         ))}
       </nav>

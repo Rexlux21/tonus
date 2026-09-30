@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { autoCorrelate, frequencyToNote } from "../lib/pitchDetect";
 import GuitarFretboard from "./GuitarFretboard";
 import PianoKeyboard from "./PianoKeyboard";
+import NoteHighway from "./NoteHighway";
 
 // How many consecutive in-tune animation frames count as "held" before we
 // advance to the next note. At ~60fps this is roughly three-quarters of a
@@ -153,6 +154,8 @@ export default function Practice({ lesson, onExit, onComplete }) {
           {Math.min(noteIndex + 1, lesson.notes.length)} / {lesson.notes.length}
         </span>
       </div>
+
+      <NoteHighway notes={lesson.notes} currentIndex={finished ? lesson.notes.length : noteIndex} />
 
       {micState === "idle" && (
         <div className="mic-gate">

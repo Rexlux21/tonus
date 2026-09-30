@@ -8,11 +8,22 @@ export const INSTRUMENTS = [
   { id: "voice", label: "Voice" },
 ];
 
+// A lesson's "style" is the musical genre/character of the exercise, as
+// opposed to its instrument. "Technique" covers scales, warm-ups and other
+// instrument-agnostic fundamentals; "Kompa" is Haitian konpa — built around
+// its characteristic root-and-fifth bass movement and call-and-response
+// lead lines, progressing from a simple solo line up to a fuller run.
+export const STYLES = [
+  { id: "technique", label: "Technique" },
+  { id: "kompa", label: "Kompa" },
+];
+
 export const LESSONS = [
   // ---------- Guitar ----------
   {
     id: "guitar-open-strings",
     instrument: "guitar",
+    style: "technique",
     title: "Open Strings",
     level: "Beginner",
     description:
@@ -29,6 +40,7 @@ export const LESSONS = [
   {
     id: "guitar-first-riff",
     instrument: "guitar",
+    style: "technique",
     title: "First Riff: E Minor Pentatonic",
     level: "Beginner",
     description:
@@ -44,6 +56,7 @@ export const LESSONS = [
   {
     id: "guitar-chromatic-warmup",
     instrument: "guitar",
+    style: "technique",
     title: "Chromatic Warm-Up",
     level: "Beginner",
     description:
@@ -60,6 +73,7 @@ export const LESSONS = [
   {
     id: "guitar-power-chord-roots",
     instrument: "guitar",
+    style: "technique",
     title: "Power Chord Roots",
     level: "Beginner",
     description:
@@ -74,6 +88,7 @@ export const LESSONS = [
   {
     id: "guitar-g-major-scale",
     instrument: "guitar",
+    style: "technique",
     title: "G Major Scale (Open Position)",
     level: "Intermediate",
     description: "A full G major scale using open-position fingering, low to high.",
@@ -91,6 +106,7 @@ export const LESSONS = [
   {
     id: "guitar-a-minor-pentatonic",
     instrument: "guitar",
+    style: "technique",
     title: "A Minor Pentatonic (Open Position)",
     level: "Intermediate",
     description: "The open-position A minor pentatonic scale — the other pentatonic shape every guitarist learns early.",
@@ -106,6 +122,7 @@ export const LESSONS = [
   {
     id: "guitar-pentatonic-box1-full",
     instrument: "guitar",
+    style: "technique",
     title: "E Minor Pentatonic — Full Box 1",
     level: "Advanced",
     description: "The complete first-position E minor pentatonic box, string by string, low to high.",
@@ -129,6 +146,7 @@ export const LESSONS = [
   {
     id: "piano-middle-c-scale",
     instrument: "piano",
+    style: "technique",
     title: "Middle C to G",
     level: "Beginner",
     description: "Play a C major scale from middle C up to G, one note at a time.",
@@ -143,6 +161,7 @@ export const LESSONS = [
   {
     id: "piano-triad",
     instrument: "piano",
+    style: "technique",
     title: "C Major Triad",
     level: "Beginner",
     description: "Play the three notes of a C major chord separately: root, third, fifth.",
@@ -155,6 +174,7 @@ export const LESSONS = [
   {
     id: "piano-five-finger-position",
     instrument: "piano",
+    style: "technique",
     title: "Five-Finger Position",
     level: "Beginner",
     description: "The classic C-D-E-F-G-F-E-D-C pattern every beginner method starts with.",
@@ -173,6 +193,7 @@ export const LESSONS = [
   {
     id: "piano-full-c-major-scale",
     instrument: "piano",
+    style: "technique",
     title: "Full C Major Scale",
     level: "Intermediate",
     description: "One complete octave of C major, middle C to the C above it.",
@@ -190,6 +211,7 @@ export const LESSONS = [
   {
     id: "piano-a-minor-scale",
     instrument: "piano",
+    style: "technique",
     title: "A Natural Minor Scale",
     level: "Intermediate",
     description: "C major's relative minor — same key signature, darker sound.",
@@ -207,6 +229,7 @@ export const LESSONS = [
   {
     id: "piano-broken-triad-arpeggio",
     instrument: "piano",
+    style: "technique",
     title: "Broken Triad Arpeggio",
     level: "Intermediate",
     description: "C major's notes played one at a time, up through the octave.",
@@ -222,6 +245,7 @@ export const LESSONS = [
   {
     id: "vocal-pitch-match",
     instrument: "voice",
+    style: "technique",
     title: "Pitch Matching",
     level: "Beginner",
     description: "Sing each note back as steadily as you can. A great daily ear-training warm-up.",
@@ -235,6 +259,7 @@ export const LESSONS = [
   {
     id: "vocal-scale-warmup",
     instrument: "voice",
+    style: "technique",
     title: "Five-Note Scale Warm-Up",
     level: "Beginner",
     description: "A classic five-note ascending warm-up used before rehearsals and lessons.",
@@ -249,6 +274,7 @@ export const LESSONS = [
   {
     id: "vocal-triad-warmup",
     instrument: "voice",
+    style: "technique",
     title: "Triad Warm-Up (Do-Mi-Sol-Mi-Do)",
     level: "Beginner",
     description: "Up and back down a major triad — a staple vocal-warmup pattern.",
@@ -263,6 +289,7 @@ export const LESSONS = [
   {
     id: "vocal-octave-jumps",
     instrument: "voice",
+    style: "technique",
     title: "Octave Jumps",
     level: "Intermediate",
     description: "Jump a full octave and land cleanly — real interval training for range and accuracy.",
@@ -278,6 +305,7 @@ export const LESSONS = [
   {
     id: "vocal-thirds",
     instrument: "voice",
+    style: "technique",
     title: "Interval Training: Thirds",
     level: "Intermediate",
     description: "Alternating notes a third apart — trains the ear for harmony singing.",
@@ -293,6 +321,7 @@ export const LESSONS = [
   {
     id: "vocal-descending-cooldown",
     instrument: "voice",
+    style: "technique",
     title: "Descending Scale Cool-Down",
     level: "Intermediate",
     description: "A full descending scale to finish a session with controlled breath support.",
@@ -305,6 +334,156 @@ export const LESSONS = [
       { name: "E", octave: 4, label: "E4" },
       { name: "D", octave: 4, label: "D4" },
       { name: "C", octave: 4, label: "C4" },
+    ],
+  },
+  // ---------- Kompa ----------
+  {
+    id: "kompa-guitar-solo",
+    instrument: "guitar",
+    style: "kompa",
+    title: "Kompa Bass Line — Solo",
+    level: "Solo",
+    description: "The root-fifth-octave movement under almost every konpa groove, on its own.",
+    notes: [
+      { name: "C", octave: 3, label: "Root" },
+      { name: "G", octave: 3, label: "Fifth" },
+      { name: "C", octave: 3, label: "Root" },
+      { name: "G", octave: 3, label: "Fifth" },
+      { name: "C", octave: 4, label: "Octave" },
+    ],
+  },
+  {
+    id: "kompa-guitar-intermediate",
+    instrument: "guitar",
+    style: "kompa",
+    title: "Kompa Bass Walk — Intermediate",
+    level: "Intermediate",
+    description: "A walking konpa bassline that passes through the third on its way up.",
+    notes: [
+      { name: "C", octave: 3, label: "Root" },
+      { name: "E", octave: 3, label: "Third" },
+      { name: "G", octave: 3, label: "Fifth" },
+      { name: "A", octave: 3, label: "Passing tone" },
+      { name: "G", octave: 3, label: "Fifth" },
+      { name: "E", octave: 3, label: "Third" },
+    ],
+  },
+  {
+    id: "kompa-guitar-advanced",
+    instrument: "guitar",
+    style: "kompa",
+    title: "Kompa Lead Line — Advanced",
+    level: "Advanced",
+    description: "A call-and-response style lead run, the kind a konpa horn section trades back and forth.",
+    notes: [
+      { name: "G", octave: 3, label: "" },
+      { name: "A", octave: 3, label: "" },
+      { name: "B", octave: 3, label: "" },
+      { name: "D", octave: 4, label: "" },
+      { name: "B", octave: 3, label: "" },
+      { name: "A", octave: 3, label: "" },
+      { name: "G", octave: 3, label: "" },
+      { name: "D", octave: 3, label: "" },
+    ],
+  },
+  {
+    id: "kompa-piano-solo",
+    instrument: "piano",
+    style: "kompa",
+    title: "Kompa Chord Roots — Solo",
+    level: "Solo",
+    description: "The I-IV-V-I root movement behind most konpa chord progressions.",
+    notes: [
+      { name: "C", octave: 4, label: "I" },
+      { name: "F", octave: 4, label: "IV" },
+      { name: "G", octave: 4, label: "V" },
+      { name: "C", octave: 4, label: "I" },
+    ],
+  },
+  {
+    id: "kompa-piano-intermediate",
+    instrument: "piano",
+    style: "kompa",
+    title: "Kompa Piano Riff — Intermediate",
+    level: "Intermediate",
+    description: "A syncopated-feel riff outlining a C major triad, the kind that sits under the vocal.",
+    notes: [
+      { name: "C", octave: 4, label: "" },
+      { name: "E", octave: 4, label: "" },
+      { name: "G", octave: 4, label: "" },
+      { name: "A", octave: 4, label: "" },
+      { name: "G", octave: 4, label: "" },
+      { name: "E", octave: 4, label: "" },
+      { name: "D", octave: 4, label: "" },
+      { name: "C", octave: 4, label: "" },
+    ],
+  },
+  {
+    id: "kompa-piano-advanced",
+    instrument: "piano",
+    style: "kompa",
+    title: "Kompa Piano Lead — Advanced",
+    level: "Advanced",
+    description: "A fuller, faster lead line spanning an octave and a half — konpa's melodic energy on piano.",
+    notes: [
+      { name: "C", octave: 4, label: "" },
+      { name: "E", octave: 4, label: "" },
+      { name: "G", octave: 4, label: "" },
+      { name: "C", octave: 5, label: "" },
+      { name: "D", octave: 5, label: "" },
+      { name: "C", octave: 5, label: "" },
+      { name: "G", octave: 4, label: "" },
+      { name: "E", octave: 4, label: "" },
+      { name: "C", octave: 4, label: "" },
+    ],
+  },
+  {
+    id: "kompa-vocal-solo",
+    instrument: "voice",
+    style: "kompa",
+    title: "Kompa Vocal Hook — Solo",
+    level: "Solo",
+    description: "A short, singable hook line — the kind of simple melodic idea konpa vocals build on.",
+    notes: [
+      { name: "C", octave: 4, label: "" },
+      { name: "D", octave: 4, label: "" },
+      { name: "E", octave: 4, label: "" },
+      { name: "D", octave: 4, label: "" },
+      { name: "C", octave: 4, label: "" },
+    ],
+  },
+  {
+    id: "kompa-vocal-intermediate",
+    instrument: "voice",
+    style: "kompa",
+    title: "Kompa Call & Response — Intermediate",
+    level: "Intermediate",
+    description: "Sing the call, then the response — the back-and-forth phrasing common in konpa vocals.",
+    notes: [
+      { name: "C", octave: 4, label: "Call" },
+      { name: "E", octave: 4, label: "Call" },
+      { name: "G", octave: 4, label: "Call" },
+      { name: "E", octave: 4, label: "Response" },
+      { name: "D", octave: 4, label: "Response" },
+      { name: "C", octave: 4, label: "Response" },
+    ],
+  },
+  {
+    id: "kompa-vocal-advanced",
+    instrument: "voice",
+    style: "kompa",
+    title: "Kompa Vocal Run — Advanced",
+    level: "Advanced",
+    description: "A wider-range run with an octave leap — real konpa vocal energy and range control.",
+    notes: [
+      { name: "G", octave: 4, label: "" },
+      { name: "A", octave: 4, label: "" },
+      { name: "B", octave: 4, label: "" },
+      { name: "C", octave: 5, label: "" },
+      { name: "B", octave: 4, label: "" },
+      { name: "A", octave: 4, label: "" },
+      { name: "G", octave: 4, label: "" },
+      { name: "E", octave: 4, label: "" },
     ],
   },
 ];

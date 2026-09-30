@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { INSTRUMENTS, LESSONS } from "../data/lessons";
+import { INSTRUMENTS, LESSONS, STYLES } from "../data/lessons";
 import GuitarFretboard from "./GuitarFretboard";
 import PianoKeyboard from "./PianoKeyboard";
 import TriviaWidget from "./TriviaWidget";
 
 const PREVIEW_NOTE = { name: "G", octave: 3 };
 
-export default function LessonList({ progress, onSelectLesson, onBonusXp }) {
-  const [filter, setFilter] = useState("all");
+export default function LessonList({ progress, onSelectLesson, onBonusXp, filter, onFilterChange }) {
+  const [styleFilter, setStyleFilter] = useState("all");
 
-  const visible = filter === "all" ? LESSONS : LESSONS.filter((l) => l.instrument === filter);
+  const visible = LESSONS.filter(
+    (l) => (filter === "all" || l.instrument === filter) && (styleFilter === "all" || l.style === styleFilter)
+  );
   const activeInstrument = INSTRUMENTS.find((inst) => inst.id === filter);
 
   return (
@@ -22,7 +24,7 @@ export default function LessonList({ progress, onSelectLesson, onBonusXp }) {
       <div className="filter-row">
         <button
           className={`filter-chip${filter === "all" ? " active" : ""}`}
-          onClick={() => setFilter("all")}
+          onClick={() => onFilterChange("all")}
         >
           All
         </button>
@@ -30,9 +32,28 @@ export default function LessonList({ progress, onSelectLesson, onBonusXp }) {
           <button
             key={inst.id}
             className={`filter-chip${filter === inst.id ? " active" : ""}`}
-            onClick={() => setFilter(inst.id)}
+            onClick={() => onFilterChange(inst.id)}
           >
             {inst.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="filter-row style-filter-row">
+        <span className="filter-row-label">Style:</span>
+        <button
+          className={`filter-chip small${styleFilter === "all" ? " active" : ""}`}
+          onClick={() => setStyleFilter("all")}
+        >
+          All
+        </button>
+        {STYLES.map((style) => (
+          <button
+            key={style.id}
+            className={`filter-chip small${styleFilter === style.id ? " active" : ""}`}
+            onClick={() => setStyleFilter(style.id)}
+          >
+            {style.label}
           </button>
         ))}
       </div>
@@ -69,6 +90,9 @@ export default function LessonList({ progress, onSelectLesson, onBonusXp }) {
             >
               <div className="lesson-card-top">
                 <span className="instrument-tag">{lesson.instrument}</span>
+                {lesson.style !== "technique" && (
+                  <span className="style-tag">{lesson.style}</span>
+                )}
                 <span className="level-tag">{lesson.level}</span>
               </div>
               <h3>{lesson.title}</h3>
